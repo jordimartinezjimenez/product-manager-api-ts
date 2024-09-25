@@ -1,7 +1,5 @@
 import { Request, Response } from "express"
-import { validationResult } from 'express-validator'
 import Product from "../models/Products.model"
-// import { IsNumeric } from "sequelize-typescript"
 
 export const getProducts = async (req: Request, res: Response) => {
     try {
@@ -32,21 +30,6 @@ export const getProductById = async (req: Request, res: Response) => {
 }
 
 export const createProduct = async (req: Request, res: Response) => {
-    // Validations
-    // await check('name')
-    //     .notEmpty().withMessage('Name is required')
-    //     .run(req)
-    // await check('price')
-    //     .isNumeric().withMessage('Price must be numeric')
-    //     .notEmpty().withMessage('Price is required')
-    //     .custom(value => value >= 0).withMessage('Price must be greater than or equal to 0')
-    //     .run(req)
-    //
-    // let errors = validationResult(req)
-    // if (!errors.isEmpty()) {
-    //     return res.status(400).json({ errors: errors.array() })
-    // }
-
     try {
         const product = await Product.create(req.body)
 
