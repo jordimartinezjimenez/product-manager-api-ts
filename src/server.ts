@@ -5,14 +5,14 @@ import db from './config/db'
 import { col } from 'sequelize'
 
 // Connect to database
-async function connectDB() {
+export async function connectDB() {
     try {
         await db.authenticate()
         db.sync()
-        console.log(colors.blue('Connection has been established successfully.'))
+        // console.log(colors.blue('Connection has been established successfully.'))
     } catch (error) {
         // console.error(error)
-        console.log(colors.red.bold('Unable to connect to the database:'))
+        console.log(colors.red.bold('Unable to connect to the database'))
     }
 }
 connectDB()
@@ -24,5 +24,9 @@ const server = express()
 server.use(express.json())
 
 server.use('/api/products', router)
+
+server.get('/api', (req, res) => {
+    res.json({ msg: 'From API' })
+})
 
 export default server
