@@ -1,5 +1,7 @@
 import express from 'express'
 import colors from 'colors'
+import cors, { CorsOptions } from 'cors'
+import morgan from 'morgan'
 import swaggerUi from 'swagger-ui-express'
 import swaggerSpec, { swaggerUiOptions } from './config/swagger'
 import router from './router'
@@ -21,9 +23,25 @@ connectDB()
 // Express instance
 const server = express()
 
+// Allow connections
+const corsOptions: CorsOptions = {
+    origin: function (origin, callback) {
+        if (origin === process.env.FRONTEND_URL) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    }
+}
+server.use(cors(corsOptions))
+
 // Read forms data
 server.use(express.json())
 
+// Morgan logger
+server.use(morgan('dev'))
+
+// Routes
 server.use('/api/products', router)
 
 // Docs
