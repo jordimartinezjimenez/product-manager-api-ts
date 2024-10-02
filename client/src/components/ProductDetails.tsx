@@ -22,11 +22,11 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
     const isAvailable = product.availability
 
     return (
-        <tr className="border-b">
-            <td className="p-3 text-lg text-gray-800">
+        <tr className="border-b-2 last:border-b-0 border-slate-100">
+            <td className="p-3 text-lg text-gray-800 text-center">
                 {product.name}
             </td>
-            <td className="p-3 text-lg text-gray-800">
+            <td className="p-3 text-lg text-gray-800 text-center">
                 {formatCurrency(product.price)}
             </td>
             <td className="p-3 text-lg text-gray-800">
@@ -35,7 +35,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                         type="submit"
                         name="id"
                         value={product.id}
-                        className={`${isAvailable ? 'text-black' : 'text-rose-600'} rounded-lg p-2 text-xs uppercase font-bold w-full border border-black-100 hover:cursor-pointer`}
+                        className={`${isAvailable ? 'text-black' : 'text-rose-600'} rounded-lg p-2 text-xs uppercase font-bold w-full border border-black-100 hover:cursor-pointer bg-zinc-50 hover:bg-zinc-100`}
                     >
                         {isAvailable ? 'Available' : 'Not Available'}
                     </button>

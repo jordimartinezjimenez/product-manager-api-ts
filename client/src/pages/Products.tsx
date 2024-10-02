@@ -30,26 +30,30 @@ export default function Products() {
                 </Link>
             </div>
 
-            <div className="p-2">
-                <table className="w-full mt-5 table-auto">
-                    <thead className="bg-slate-800 text-white">
-                        <tr>
-                            <th className="p-2">Product</th>
-                            <th className="p-2">Price</th>
-                            <th className="p-2">Availability</th>
-                            <th className="p-2">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {products.map(product => (
-                            <ProductDetails
-                                key={product.id}
-                                product={product}
-                            />
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+            {products.length > 0 ? (
+                <div className="p-2 overflow-x-auto">
+                    <table className="w-full mt-5 table-auto shadow bg-slate-50/5">
+                        <thead className="bg-slate-800 text-white">
+                            <tr>
+                                <th className="p-2">Product</th>
+                                <th className="p-2">Price</th>
+                                <th className="p-2">Availability</th>
+                                <th className="p-2">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {products.map(product => (
+                                <ProductDetails
+                                    key={product.id}
+                                    product={product}
+                                />
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            ) : (
+                <p className="mt-5 ml-5">No products yet.<br />Add some! 😉</p>
+            )}
         </>
     )
 }

@@ -32,10 +32,10 @@ export async function action({ request, params }: ActionFunctionArgs) {
     }
 }
 
-const availabilityOptions = [
-    { name: "Available", value: true },
-    { name: "Not Available", value: false }
-]
+// const availabilityOptions = [
+//     { name: "Available", value: true },
+//     { name: "Not Available", value: false }
+// ]
 
 export default function EditProduct() {
 
